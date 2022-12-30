@@ -1,0 +1,40 @@
+﻿@page "/add"
+@page "/edit/{id:int}"
+
+@if(Id==0)
+{
+    <h2 class="text-center">Add Slang</h2>
+    
+}else
+{
+    <h2 class="text-center">Edit Slang</h2>
+}
+
+<div class="row justify-content-center  mt-2">  
+
+    <div class="col-md-6">
+        <EditForm Model="model">
+            <div class="border p-3 mt-4 text-bg-light">
+                <div class="mb-4"> 
+                    <InputText @bind-Value="@model.Phrase" class="form-control text-center" type="text" placeholder="Phrase"></InputText>
+                </div>
+                <div class="mb-4"> 
+                   <InputText @bind-Value="@model.Meaning"  class="form-control text-center" type="text" placeholder="Meaning"></InputText>
+                </div>                
+            </div>
+            
+        </EditForm>
+
+
+    </div>    
+</div>
+<div class="text-center" >
+                <a href="slang" class="btn btn-secondary mt-5 m-1">Go Back</a>
+                @if(Id==0)
+                {
+                    <button class="btn btn-success mt-5 m-1" @onclick="AddNewSlang">Save</button> 
+                }else
+                {
+                    <button class="btn btn-success mt-5 m-1" @onclick="EditAsync">Save</button>
+                }
+            </div>

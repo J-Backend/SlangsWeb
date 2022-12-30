@@ -1,0 +1,14 @@
+﻿@page "/delete/{id:int}"
+
+<div >
+    <div>
+        <h4 >Delete Slang ?</h4>
+    </div>
+    <hr />
+    <div>
+        <a href="slang" class="btn btn-success  mt-2">Go Back</a>
+        <button class="btn btn-secondary mt-2" onclick="@(()=>DeleteAsync(Id))" >Do It</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,24 @@
+﻿
+<div class="mainBox_pagination--internal btn-outline-dark">
+    <input id="prevButton" type="button" class="btn btn-outline-secondary text-bg-secondary paginationBox_element" onclick="@PrevPage" value="Previous">
+    @{
+        for(int i = CurrentPage-2; i <= CurrentPage+2; i++){
+            int j = i;
+  
+            if (i > 0 && i<=CountPages)
+            {
+                Console.WriteLine("Cantidad paginas es: " + CountPages);
+                if (i == CurrentPage)
+                {
+                    <span class="px-2 paginationBox_element text-dark"  style="font-weight:bold; cursor:pointer" onclick="@(()=>SelectedPage(j))">@i</span>
+                }
+                else
+                {
+                    <span class="px-2 paginationBox_element text-dark"  style="cursor:pointer" onclick="@(()=>SelectedPage(j))">@i</span>
+                }
+            }
+        }
+    }  
+
+    <input id="nextButton" type="button" class="btn btn-outline-primary text-bg-primary paginationBox_element" onclick="@NextPage" value="Next">
+ </div>

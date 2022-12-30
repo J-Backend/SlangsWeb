@@ -1,0 +1,57 @@
+﻿@page "/slang"
+
+ <link href="css/bootsWatch/RazorStyle.css" rel="stylesheet" />
+@if (ListSlangs == null)
+{
+    <p><em>Loading</em> ...</p>
+}
+else
+{
+
+     <div class="col-12 text-end">
+            <a class="btn text-bg-dark text-light" href="/add">New Slang</a>
+    </div>
+
+    <div class="mainBox">
+        <h3 class="mainBox_title" >Slangs</h3>
+
+        <table class="table table-bordered table-striped text-center  mainBox_table ">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Phrase</th>
+                    <th></th>
+                    <th>Meaning</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var phrase in ListSlangs)
+                {
+                    <tr>
+                        <td>@phrase.Id</td>
+                        <td>@phrase.Phrase</td>
+                        <td><a class="text-dark btn-bg-light sound" onclick="@(()=>PlaySlangAsync(phrase.Phrase, "en"))"><i class="bi bi-volume-up"></i></a></td>
+                        <td>@phrase.Meaning</td>
+                        <td><a class="text-dark btn-bg-light sound" onclick="@(()=>PlaySlangAsync(phrase.Meaning, "es"))"><i class="bi bi-volume-up"></i></a></td>
+                   
+                        <td>
+                            <div class="w-75 btn-group"  role="group">
+                                <a href="/edit/@phrase.Id"  class="btn text-dark"> <i class="bi bi-pencil-fill"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <div  class="w-75 btn-group" role="group">
+                                <a href="/delete/@phrase.Id"  class="btn text-dark"> <i class="bi bi-trash3-fill"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }        
+            </tbody>
+        </table>
+        <div class="mainBox_pagination">
+            <Pagination SetSelectedPage="SetSelectedPageAsync" TotalSlangs="TotalSlangs"></Pagination>
+        </div>
+    </div>
+}
+
